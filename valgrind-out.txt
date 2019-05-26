@@ -1,0 +1,291 @@
+==69166== Memcheck, a memory error detector
+==69166== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==69166== Using Valgrind-3.14.0-353a3587bb-20181007X and LibVEX; rerun with -h for copyright info
+==69166== Command: ./server
+==69166== Parent PID: 44555
+==69166== 
+--69166-- 
+--69166-- Valgrind options:
+--69166--    --leak-check=full
+--69166--    --show-leak-kinds=all
+--69166--    --track-origins=yes
+--69166--    --verbose
+--69166--    --log-file=valgrind-out.txt
+--69166-- Output from sysctl({CTL_KERN,KERN_VERSION}):
+--69166--   Darwin Kernel Version 16.7.0: Thu Dec 20 21:53:35 PST 2018; root:xnu-3789.73.31~1/RELEASE_X86_64
+--69166-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--69166-- Page sizes: currently 4096, max supported 4096
+--69166-- Valgrind library directory: /usr/local/Cellar/valgrind/3.14.0/lib/valgrind
+--69166-- ./server (rx at 0x100000000, rw at 0x100001000)
+--69166--    reading syms   from primary file (3 13)
+--69166--    dSYM= ./server.dSYM/Contents/Resources/DWARF/server
+--69166--    reading dwarf3 from dsyms file
+--69166-- /usr/lib/dyld (rx at 0x100003000, rw at 0x100041000)
+--69166--    reading syms   from primary file (6 1223)
+--69166-- Scheduler: using generic scheduler lock implementation.
+--69166-- Reading suppressions file: /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp
+==69166== embedded gdbserver: reading from /var/folders/_4/wsb78tbx13z2g_2qqbvdr_000000gn/T//vgdb-pipe-from-vgdb-to-69166-by-root5533-on-???
+==69166== embedded gdbserver: writing to   /var/folders/_4/wsb78tbx13z2g_2qqbvdr_000000gn/T//vgdb-pipe-to-vgdb-from-69166-by-root5533-on-???
+==69166== embedded gdbserver: shared mem   /var/folders/_4/wsb78tbx13z2g_2qqbvdr_000000gn/T//vgdb-pipe-shared-mem-vgdb-69166-by-root5533-on-???
+==69166== 
+==69166== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==69166== don't want to do, unless you know exactly what you're doing,
+==69166== or are doing some strange experiment):
+==69166==   /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/../../bin/vgdb --pid=69166 ...command...
+==69166== 
+==69166== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==69166==   /path/to/gdb ./server
+==69166== and then give GDB the following command
+==69166==   target remote | /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/../../bin/vgdb --pid=69166
+==69166== --pid is optional if only one valgrind process is running
+==69166== 
+--69166-- REDIR: 0x100029620 (dyld:strcmp) redirected to 0x258057691 (???)
+--69166-- REDIR: 0x100023130 (dyld:arc4random) redirected to 0x25805772f (???)
+--69166-- REDIR: 0x100022fe0 (dyld:strlen) redirected to 0x258057660 (???)
+--69166-- REDIR: 0x100022f40 (dyld:strcpy) redirected to 0x2580576ad (???)
+--69166-- REDIR: 0x1000267dd (dyld:strcat) redirected to 0x258057671 (???)
+--69166-- REDIR: 0x10002681b (dyld:strlcat) redirected to 0x2580576ca (???)
+--69166-- /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x10008e000, rw at 0x100094000)
+--69166--    reading syms   from primary file (3 88)
+--69166--    dSYM= /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--69166-- /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0x100098000, rw at 0x1000a1000)
+--69166--    reading syms   from primary file (72 96)
+--69166--    dSYM= /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+--69166-- /usr/lib/libSystem.B.dylib (rx at 0x1000a7000, rw at 0x1000a9000)
+--69166--    reading syms   from primary file (31 5)
+--69166-- /usr/lib/system/libcache.dylib (rx at 0x1000ae000, rw at 0x1000b3000)
+--69166--    reading syms   from primary file (32 29)
+--69166-- /usr/lib/system/libcommonCrypto.dylib (rx at 0x1000b8000, rw at 0x1000c3000)
+--69166--    reading syms   from primary file (214 167)
+--69166-- /usr/lib/system/libcompiler_rt.dylib (rx at 0x1000d0000, rw at 0x1000d8000)
+--69166--    reading syms   from primary file (510 8)
+--69166-- /usr/lib/system/libcopyfile.dylib (rx at 0x1000e5000, rw at 0x1000ee000)
+--69166--    reading syms   from primary file (13 35)
+--69166-- /usr/lib/system/libcorecrypto.dylib (rx at 0x1000f4000, rw at 0x100178000)
+--69166--    reading syms   from primary file (480 678)
+--69166-- /usr/lib/system/libdispatch.dylib (rx at 0x100193000, rw at 0x1001c5000)
+--69166--    reading syms   from primary file (258 910)
+--69166-- /usr/lib/system/libdyld.dylib (rx at 0x1001fe000, rw at 0x100204000)
+--69166--    reading syms   from primary file (98 130)
+--69166-- /usr/lib/system/libkeymgr.dylib (rx at 0x10020c000, rw at 0x10020d000)
+--69166--    reading syms   from primary file (12 3)
+--69166-- /usr/lib/system/liblaunch.dylib (rx at 0x100211000, rw at 0x100212000)
+--69166--    reading syms   from primary file (113 3)
+--69166-- /usr/lib/system/libmacho.dylib (rx at 0x100219000, rw at 0x10021f000)
+--69166--    reading syms   from primary file (102 1)
+--69166-- /usr/lib/system/libquarantine.dylib (rx at 0x100225000, rw at 0x100228000)
+--69166--    reading syms   from primary file (67 32)
+--69166-- /usr/lib/system/libremovefile.dylib (rx at 0x10022e000, rw at 0x100230000)
+--69166--    reading syms   from primary file (15 4)
+--69166-- /usr/lib/system/libsystem_asl.dylib (rx at 0x100235000, rw at 0x10024e000)
+--69166--    reading syms   from primary file (222 224)
+--69166-- /usr/lib/system/libsystem_blocks.dylib (rx at 0x10025b000, rw at 0x10025c000)
+--69166--    reading syms   from primary file (21 6)
+--69166-- /usr/lib/system/libsystem_c.dylib (rx at 0x100260000, rw at 0x1002ee000)
+--69166--    reading syms   from primary file (1331 777)
+--69166-- /usr/lib/system/libsystem_configuration.dylib (rx at 0x100315000, rw at 0x100319000)
+--69166--    reading syms   from primary file (38 75)
+--69166-- /usr/lib/system/libsystem_coreservices.dylib (rx at 0x100320000, rw at 0x100324000)
+--69166--    reading syms   from primary file (14 36)
+--69166-- /usr/lib/system/libsystem_coretls.dylib (rx at 0x100329000, rw at 0x100342000)
+--69166--    reading syms   from primary file (130 250)
+--69166-- /usr/lib/system/libsystem_dnssd.dylib (rx at 0x10034d000, rw at 0x100354000)
+--69166--    reading syms   from primary file (49 24)
+--69166-- /usr/lib/system/libsystem_info.dylib (rx at 0x100359000, rw at 0x100383000)
+--69166--    reading syms   from primary file (523 519)
+--69166-- /usr/lib/system/libsystem_kernel.dylib (rx at 0x100398000, rw at 0x1003bb000)
+--69166--    reading syms   from primary file (1179 98)
+--69166-- /usr/lib/system/libsystem_m.dylib (rx at 0x1003d2000, rw at 0x10041a000)
+--69166--    reading syms   from primary file (605 1)
+--69166-- /usr/lib/system/libsystem_malloc.dylib (rx at 0x100426000, rw at 0x100445000)
+--69166--    reading syms   from primary file (117 253)
+--69166-- /usr/lib/system/libsystem_network.dylib (rx at 0x100451000, rw at 0x1004ab000)
+--69166--    reading syms   from primary file (730 584)
+--69166-- /usr/lib/system/libsystem_networkextension.dylib (rx at 0x1004cd000, rw at 0x1004d7000)
+--69166--    reading syms   from primary file (89 229)
+--69166-- /usr/lib/system/libsystem_notify.dylib (rx at 0x1004e2000, rw at 0x1004ec000)
+--69166--    reading syms   from primary file (113 54)
+--69166-- /usr/lib/system/libsystem_platform.dylib (rx at 0x1004f3000, rw at 0x1004fc000)
+--69166--    reading syms   from primary file (158 105)
+--69166-- /usr/lib/system/libsystem_pthread.dylib (rx at 0x100504000, rw at 0x10050f000)
+--69166--    reading syms   from primary file (174 79)
+--69166-- /usr/lib/system/libsystem_sandbox.dylib (rx at 0x10051b000, rw at 0x10051f000)
+--69166--    reading syms   from primary file (85 9)
+--69166-- /usr/lib/system/libsystem_secinit.dylib (rx at 0x100525000, rw at 0x100527000)
+--69166--    reading syms   from primary file (1 7)
+--69166-- /usr/lib/system/libsystem_symptoms.dylib (rx at 0x10052c000, rw at 0x100534000)
+--69166--    reading syms   from primary file (8 66)
+--69166-- /usr/lib/system/libsystem_trace.dylib (rx at 0x10053a000, rw at 0x10054e000)
+--69166--    reading syms   from primary file (101 236)
+--69166-- /usr/lib/system/libunwind.dylib (rx at 0x10055c000, rw at 0x100562000)
+--69166--    reading syms   from primary file (102 52)
+--69166-- /usr/lib/system/libxpc.dylib (rx at 0x100569000, rw at 0x100593000)
+--69166--    reading syms   from primary file (515 825)
+--69166-- /usr/lib/libobjc.A.dylib (rx at 0x1005b2000, rw at 0x100985000)
+--69166--    reading syms   from primary file (368 886)
+--69166-- /usr/lib/libc++abi.dylib (rx at 0x100a62000, rw at 0x100a8c000)
+--69166--    reading syms   from primary file (339 188)
+--69166-- /usr/lib/libc++.1.dylib (rx at 0x100a9b000, rw at 0x100af2000)
+--69166--    reading syms   from primary file (1979 1610)
+--69166-- REDIR: 0x1004f4680 (libsystem_platform.dylib:_platform_memchr$VARIANT$Haswell) redirected to 0x10009b154 (_platform_memchr$VARIANT$Haswell)
+--69166-- REDIR: 0x1004f4760 (libsystem_platform.dylib:_platform_memcmp) redirected to 0x10009b849 (_platform_memcmp)
+--69166-- REDIR: 0x1004f4cc0 (libsystem_platform.dylib:_platform_strncmp) redirected to 0x10009b055 (_platform_strncmp)
+--69166-- REDIR: 0x100261b40 (libsystem_c.dylib:strlen) redirected to 0x10009ace6 (strlen)
+--69166-- REDIR: 0x1004f5280 (libsystem_platform.dylib:_platform_strcmp) redirected to 0x10009b0d1 (_platform_strcmp)
+--69166-- REDIR: 0x10042ad61 (libsystem_malloc.dylib:calloc) redirected to 0x100099bcf (calloc)
+--69166-- REDIR: 0x10042a3dc (libsystem_malloc.dylib:malloc_default_zone) redirected to 0x10009a911 (malloc_default_zone)
+--69166-- REDIR: 0x100428217 (libsystem_malloc.dylib:malloc_zone_malloc) redirected to 0x10009981b (malloc_zone_malloc)
+--69166-- REDIR: 0x10042a3e7 (libsystem_malloc.dylib:malloc_zone_calloc) redirected to 0x100099dbd (malloc_zone_calloc)
+--69166-- REDIR: 0x1004271e8 (libsystem_malloc.dylib:malloc) redirected to 0x1000995b0 (malloc)
+--69166-- REDIR: 0x10042a4af (libsystem_malloc.dylib:malloc_zone_from_ptr) redirected to 0x10009a952 (malloc_zone_from_ptr)
+--69166-- REDIR: 0x100429dd5 (libsystem_malloc.dylib:free) redirected to 0x100099991 (free)
+--69166-- REDIR: 0x1004f4ea0 (libsystem_platform.dylib:_platform_strchr$VARIANT$Haswell) redirected to 0x10009abb6 (_platform_strchr$VARIANT$Haswell)
+--69166-- REDIR: 0x10042af10 (libsystem_malloc.dylib:realloc) redirected to 0x100099f51 (realloc)
+==69166== 
+==69166== Process terminating with default action of signal 10 (SIGBUS)
+==69166==  Non-existent physical address at address 0x100000D93
+==69166==    at 0x1004F8F2E: _platform_memmove$VARIANT$Haswell (in /usr/lib/system/libsystem_platform.dylib)
+==69166==    by 0x1002E6296: __strcat_chk (in /usr/lib/system/libsystem_c.dylib)
+==69166==    by 0x10000095D: handle_request (routes.c:52)
+==69166==    by 0x100000B99: main (server.c:53)
+==69166== 
+==69166== HEAP SUMMARY:
+==69166==     in use at exit: 82,415 bytes in 166 blocks
+==69166==   total heap usage: 182 allocs, 16 frees, 88,559 bytes allocated
+==69166== 
+==69166== Searching for pointers to 166 not-freed blocks
+==69166== Checked 9,949,640 bytes
+==69166== 
+==69166== 24 bytes in 1 blocks are still reachable in loss record 3 of 46
+==69166==    at 0x10009989E: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x1005B58A6: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==69166==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==69166==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==69166==    by 0x1005B3074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10019468D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==69166== 
+==69166== 32 bytes in 1 blocks are still reachable in loss record 8 of 46
+==69166==    at 0x10009989E: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x1005B59FE: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B59CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B58CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==69166==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==69166==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==69166== 
+==69166== 32 bytes in 1 blocks are still reachable in loss record 9 of 46
+==69166==    at 0x10009989E: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x1005B5A1F: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B59CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B58CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==69166==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==69166==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==69166== 
+==69166== 32 bytes in 1 blocks are still reachable in loss record 10 of 46
+==69166==    at 0x100099626: malloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x1005B5AE3: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B59CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B58CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==69166==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==69166==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==69166== 
+==69166== 32 bytes in 1 blocks are still reachable in loss record 11 of 46
+==69166==    at 0x100099626: malloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x1005B5934: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==69166==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==69166==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==69166==    by 0x1005B3074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10019468D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==69166== 
+==69166== 48 bytes in 1 blocks are still reachable in loss record 15 of 46
+==69166==    at 0x100099E4D: malloc_zone_calloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x1005B5EC6: _NXHashRehashToCapacity (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B5E50: NXHashInsert (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B5B0D: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B59CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B58CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==69166== 
+==69166== 72 bytes in 3 blocks are possibly lost in loss record 26 of 46
+==69166==    at 0x100099C8A: calloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x1005B3846: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==69166==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==69166==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==69166==    by 0x1005B3074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==69166==    by 0x10019468D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==69166==    by 0x10019463A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==69166==    by 0x1000A89D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==69166==    by 0x100018A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==69166==    by 0x100018C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==69166== 
+==69166== 256 bytes in 1 blocks are definitely lost in loss record 35 of 46
+==69166==    at 0x100099626: malloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x1000007E4: handle_request (routes.c:10)
+==69166==    by 0x100000B99: main (server.c:53)
+==69166== 
+==69166== 30,000 bytes in 1 blocks are still reachable in loss record 45 of 46
+==69166==    at 0x100099626: malloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x10000081E: handle_request (routes.c:14)
+==69166==    by 0x100000B99: main (server.c:53)
+==69166== 
+==69166== 30,000 bytes in 1 blocks are definitely lost in loss record 46 of 46
+==69166==    at 0x100099626: malloc (in /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==69166==    by 0x10000080C: handle_request (routes.c:13)
+==69166==    by 0x100000B99: main (server.c:53)
+==69166== 
+==69166== LEAK SUMMARY:
+==69166==    definitely lost: 30,256 bytes in 2 blocks
+==69166==    indirectly lost: 0 bytes in 0 blocks
+==69166==      possibly lost: 72 bytes in 3 blocks
+==69166==    still reachable: 30,200 bytes in 7 blocks
+==69166==         suppressed: 21,887 bytes in 154 blocks
+==69166== 
+==69166== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 12 from 12)
+--69166-- 
+--69166-- used_suppression:      5 OSX1012:19-Leak /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:924 suppressed: 8,792 bytes in 5 blocks
+--69166-- used_suppression:      1 OSX1012:15-Leak /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:886 suppressed: 4,096 bytes in 1 blocks
+--69166-- used_suppression:      7 OSX1012:17-Leak /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:906 suppressed: 3,616 bytes in 57 blocks
+--69166-- used_suppression:      3 OSX1012:16-Leak /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:897 suppressed: 3,072 bytes in 48 blocks
+--69166-- used_suppression:     16 OSX1012:10-Leak /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:839 suppressed: 2,191 bytes in 39 blocks
+--69166-- used_suppression:      4 OSX1012:18-Leak /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:915 suppressed: 120 bytes in 4 blocks
+--69166-- used_suppression:      1 OSX1012:dyld-5 /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:1283
+--69166-- used_suppression:      2 OSX1012:dyld-4 /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:1275
+--69166-- used_suppression:      1 OSX1012:dyld-3 /usr/local/Cellar/valgrind/3.14.0/lib/valgrind/default.supp:1267
+==69166== 
+==69166== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 12 from 12)

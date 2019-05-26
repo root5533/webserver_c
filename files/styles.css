@@ -1,0 +1,13 @@
+.starter-template {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.c-logo {
+    display: flex;
+    justify-content: center;
+}
+
+.c-image {
+    width: 50%;
+}
