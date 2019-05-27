@@ -56,29 +56,19 @@
     </nav>
 
     <main role="main" class="container">
-
         <div class="starter-template">
             <h1>This page includes simple PHP code</h1>
             <p class="lead">
-            <?php
-                 echo 'Welcome guest'.PHP_EOL;
-                 echo '<br/>';
-                 echo 'Current system time is: '.date('Y-m-d H:i:s').PHP_EOL;
-                 echo '<br/>';
-                 echo 'and you are running '.php_uname();
-                 echo '<br/>';
-            ?>
+	    <?php date_default_timezone_set('Asia/Kolkata'); ?>
+            <?php echo 'Welcome guest'.PHP_EOL; ?>
+	    <?php echo '<br/>' ?>
+	    <?php echo 'Current system time is: '.date('Y-m-d H:i:s').PHP_EOL; ?>
+	    <?php echo '<br/>' ?>
+	    <?php echo 'You are running '.php_uname(); ?>
             </p>
-            <div class="c-logo">
-                <img src="images/c.jpg" class="c-image">
-            </div>
         </div>
+    </main>
 
-    </main><!-- /.container -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>

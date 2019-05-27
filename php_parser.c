@@ -46,4 +46,48 @@ char *php_compile(char *file_location)
 
 char *php_post_compile(char *file_location, char *request)
 {
+    ph7 *pEngine;
+    ph7_vm *pVm;
+    int rc;
+
+    rc = ph7_init(&pEngine);
+    if (rc != PH7_OK)
+    {
+        perror("Error while allocating a new PH7 engine instance");
+        return "500";
+    }
+
+    rc = ph7_compile_file(pEngine, file_location, &pVm, 0);
+    if (rc != PH7_OK)
+    {
+        perror("Compile error");
+        return "500";
+    }
+
+    rc = ph7_vm_config(pVm, PH7_VM_CONFIG_HTTP_REQUEST, request, strlen(request));
+    if (rc != PH7_OK)
+    {
+        perror("Request parse error");
+        return "500";
+    }
+
+    rc = ph7_vm_exec(pVm, 0);
+    if (rc != PH7_OK)
+    {
+        perror("VM execution error");
+        return "500";
+    }
+
+    void *pOutput;
+    unsigned int nLen;
+
+    ph7_vm_config(pVm, PH7_VM_CONFIG_EXTRACT_OUTPUT, &pOutput, &nLen);
+    if (nLen > 0)
+    {
+        return (char *)pOutput;
+    }
+    else
+    {
+        return "500";
+    }	
 }

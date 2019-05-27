@@ -57,18 +57,9 @@
 
     <main role="main" class="container">
         <div class="starter-template">
-            <form action="/welcome.php" method="POST">
-                <h1>Form</h1>
-                <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control" id="email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <h1>Form Result</h1>
+            Welcome <?php echo $_POST["name"]; ?><br>
+            Your email address is: <?php echo $_POST["email"]; ?>
         </div>
     </main>
 

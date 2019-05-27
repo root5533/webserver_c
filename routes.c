@@ -5,6 +5,8 @@
 #include <sys/socket.h>
 #include <sys/uio.h>
 #include <errno.h>
+#include <sys/stat.h>
+#include <sys/sendfile.h>
 #include "php_parser.c"
 #define STATUS_OK "200 OK\n"
 #define STATUS_NOT_FOUND "404 NOT FOUND\n"
@@ -15,6 +17,9 @@ void handle_request(char *buffer, int socket);
 
 void handle_request(char *buffer, int socket)
 {
+    char array2[8192];
+    strncpy(array2, buffer, strlen(buffer));
+    struct stat stat_buf;
     char header_delim[] = "\r\n\r\n";
     char method_delim[] = " ";
     char protocol[] = "HTTP/1.1 ";
@@ -65,13 +70,26 @@ void handle_request(char *buffer, int socket)
                      strcmp(content_type, "Content-Type: image/png\n") == 0)
             {
                 // image handling not working
-                fseek(f, 0, SEEK_END);
-                long fsize = ftell(f);
-                fseek(f, 0, SEEK_SET);
-                msg = malloc(fsize + 8192);
-                payload = malloc(fsize);
-                fread(payload, 1, fsize, f);
+                // fseek(f, 0, SEEK_END);
+                // long fsize = ftell(f);
+                // fseek(f, 0, SEEK_SET);
+                // fread(payload, 1, fsize, f);
+                msg = malloc(8192);
+                payload = malloc(8192);
+		fstat (f, &stat_buf);
+                if ((write(socket, msg, strlen(msg))) < 0)
+                {
+                    perror("Error when sending message to server");
+                }
+                /*if (sendfile(socket, f, 0, 0))
+                {
+                }
+                else
+                {
+                    printf("ERROR: %s\n", strerror(errno));
+                }*/
                 fclose(f);
+		return;
             }
             else
             {
@@ -89,7 +107,7 @@ void handle_request(char *buffer, int socket)
             // msg = malloc(8192);
             // status = 404;
             // payload = not_found;
-            payload = php_post_compile(file_location, buffer);
+            payload = php_post_compile(file_location, array2);
             msg = malloc(sizeof(payload) + 8192);
             fclose(f);
         }
